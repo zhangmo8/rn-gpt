@@ -37,7 +37,7 @@ function App(): JSX.Element {
           contentInsetAdjustmentBehavior="automatic">
           {list.map(item => {
             return (
-              <View style={styles.lItem} key={item}>
+              <View style={styles.listItem} key={item}>
                 <Text style={styles.listItemContent}>{item}</Text>
               </View>
             );
