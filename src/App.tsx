@@ -31,7 +31,6 @@ function App(): JSX.Element {
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
-
         <ScrollView
           style={styles.scrollView}
           contentInsetAdjustmentBehavior="automatic">
