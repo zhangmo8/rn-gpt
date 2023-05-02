@@ -1,5 +1,15 @@
-import { View } from 'react-native';
+// import Login from '../login';
+// import {NavigationContainer} from '@react-navigation/native';
+// import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
+import {View, Text} from 'react-native';
+import React from 'react';
 
-export default () => {
-  return <View>This is a Setting Page</View>;
-};
+function App(): JSX.Element {
+  return (
+    <View>
+      <Text>login</Text>
+    </View>
+  );
+}
+
+export default App;
