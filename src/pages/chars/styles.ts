@@ -16,7 +16,6 @@ export default StyleSheet.create({
     borderBottomColor: 'black',
   },
   listItemContent: {
-    textAlign: 'center',
     lineHeight: 50,
   },
   chatInput: {
