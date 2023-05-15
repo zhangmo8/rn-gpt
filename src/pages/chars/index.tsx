@@ -14,6 +14,7 @@ import styles from './styles';
 
 import Input from 'components/Input';
 import { gptDemo } from 'servers/chat';
+import MessageItem from 'components/message';
 
 // function generateNumbers() {
 //   let numbers = [];
@@ -32,45 +33,45 @@ export default () => {
   const timer = useRef<number>();
 
   useEffect(() => {
-    gptDemo()
-      .then(res => res.text())
-      .then(res => {
-        const messageList = res.split('data:');
-        for (let i = 0;i < messageList.length;i++) {
-          if (i === 0) {
-            continue;
-          }
+    // gptDemo()
+    //   .then(res => res.text())
+    //   .then(res => {
+    //     const messageList = res.split('data:');
+    //     for (let i = 0;i < messageList.length;i++) {
+    //       if (i === 0) {
+    //         continue;
+    //       }
 
-          if (i === messageList.length - 1) {
-            setMessage(messageListRecord.current.join(''));
-            delayRender(messageListRecord.current.join('').length);
-            break;
-          }
+    //       if (i === messageList.length - 1) {
+    //         setMessage(messageListRecord.current.join(''));
+    //         delayRender(messageListRecord.current.join('').length);
+    //         break;
+    //       }
 
-          const resultFragment = JSON.parse(messageList[i]).choices[0].delta.content || '';
+    //       const resultFragment = JSON.parse(messageList[i]).choices[0].delta.content || '';
 
-          messageListRecord.current.push(resultFragment);
-        }
-      })
-      .catch(err => {
-        console.log('error', err);
-      });
+    //       messageListRecord.current.push(resultFragment);
+    //     }
+    //   })
+    //   .catch(err => {
+    //     console.log('error', err);
+    //   });
 
-    return () => {
-      timer.current && clearInterval(timer.current)
-      timer.current = undefined;
-    };
+    // return () => {
+    //   timer.current && clearInterval(timer.current)
+    //   timer.current = undefined;
+    // };
   }, []);
 
-  function delayRender(length: number) {
-    timer.current = setInterval(() => {
-      if (msgIndex >= (length || 0)) {
-        timer.current && clearInterval(timer.current);
-      }
+  // function delayRender(length: number) {
+  //   timer.current = setInterval(() => {
+  //     if (msgIndex >= (length || 0)) {
+  //       timer.current && clearInterval(timer.current);
+  //     }
 
-      setMsgIndex(current => current + 1);
-    }, 100);
-  }
+  //     setMsgIndex(current => current + 1);
+  //   }, 100);
+  // }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -79,9 +80,10 @@ export default () => {
         <ScrollView
           style={styles.scrollView}
           contentInsetAdjustmentBehavior="automatic">
-          <Text style={styles.listItemContent}>
+          <MessageItem />
+          {/* <Text style={styles.listItemContent}>
             {message?.slice(0, msgIndex)}
-          </Text>
+          </Text> */}
           {/* {list.map(item => {
             return (
               <View style={styles.listItem} key={item}>

@@ -3,7 +3,7 @@ export const gptDemo = () => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': '',
+      'Authorization': 'Bearer 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',
     },
     body: JSON.stringify({
       model: 'gpt-3.5-turbo',
